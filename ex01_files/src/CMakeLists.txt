@@ -2,12 +2,12 @@
                                               "Vertex.cpp"
                                               "Utilities.cpp"
                                               "Board.cpp"
-                                              "../include/Rectangle.h"
-                                              "../include/Triangle.h"
-                                              "../include/Square.h"
-                                              "../include/Hourglass.h"
                                               "Rectangle.cpp"
                                               "Triangle.cpp"
                                               "Square.cpp"
-                                              "HourGlass.cpp")
+                                              "HourGlass.cpp"
+                                              "../include/Rectangle.h"
+                                              "../include/Triangle.h"
+                                              "../include/Square.h"
+                                              "../include/Hourglass.h")
 

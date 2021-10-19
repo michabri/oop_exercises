@@ -17,54 +17,27 @@ using std::cin;
 // Time constructor initializes each data members.
 // Ensures all Rectangles objects start in a consistent state.
 Rectangle::Rectangle(const Vertex& bottomLeft, const Vertex& topRight)
+	:m_bottomLeftRect(bottomLeft.m_col, bottomLeft.m_row), 
+	m_topRightRect(topRight.m_col, topRight.m_row)
 {
 	if (!CheckValid(bottomLeft, topRight))
 		setDefault();
-	else
-	{
-		m_bottomLeftRect = bottomLeft;
-		m_topRightRect = topRight;
-	}
-} // end Rectangle constructor 1
+} 
 
 //-------------------------------------------------------------
-Rectangle::Rectangle(const Vertex* verticles)
-{
-	if (!CheckValid(verticles[0], verticles[1]))
-		setDefault();
-	else
-	{
-		m_bottomLeftRect = verticles[0];
-		m_topRightRect = verticles[1];
-	}
-}
+Rectangle::Rectangle(const Vertex vertices[2])
+	:Rectangle(vertices[0], vertices[1])
+{}
 
 //-------------------------------------------------------------
 Rectangle::Rectangle(double x0, double y0, double x1, double y1)
-{
-	Vertex vertex0(x0,y0), vertex1(x1,y1);
-
-	if (!CheckValid(vertex0, vertex1))
-		setDefault();
-	else
-	{
-		m_bottomLeftRect = vertex0;
-		m_topRightRect = vertex1;
-	}
-}
+	:Rectangle(Vertex(x0, y0),Vertex(x1, y1))
+{}
 
 //-------------------------------------------------------------
 Rectangle::Rectangle(const Vertex& start, double width, double height)
-{
-	if (!start.isValid() || width < 0 || height < 0)
-		setDefault();
-	else
-	{
-		m_bottomLeftRect = start;
-		m_topRightRect.m_col = start.m_col + width;
-		m_topRightRect.m_row = start.m_row + height;
-	}
-}
+	:Rectangle(start, Vertex(start.m_col+width, start.m_row+height))
+{}
 //-------------------------------------------------------------
 bool Rectangle::CheckValid(const Vertex bl,const Vertex tr)
 {
